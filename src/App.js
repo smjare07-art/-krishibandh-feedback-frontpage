@@ -230,6 +230,58 @@ useEffect(() => {
         </div>
 
       </div>
+      {/* FOOTER */}
+
+<footer className="footer">
+  <div className="footer-container">
+
+```
+{/* LEFT */}
+<div className="footer-section">
+  <h2>🌱 Krishibandh</h2>
+  <p>Digital Bridge Between Farmers & Industries</p>
+  <p>
+    Empowering farmers with technology, transparency, and fair pricing.
+  </p>
+</div>
+
+{/* CENTER */}
+<div className="footer-section">
+  <h3>📞 Contact Us</h3>
+  <p>👨‍💻 Shubham Jare</p>
+  <p>📧 smjare07@gmail.com</p>
+  <p>📱 +91 9970933377</p>
+  <a 
+    href="https://wa.me/919970933377" 
+    target="_blank" 
+    rel="noreferrer"
+    className="whatsapp-btn"
+  >
+    💬 Chat on WhatsApp
+  </a>
+</div>
+
+{/* RIGHT */}
+<div className="footer-section">
+  <h3>🏫 Institute</h3>
+  <p>Adarsh Institute of Technology</p>
+  <p>Vita, Sangli</p>
+
+  <h3 style={{marginTop:"10px"}}>🚀 Project Info</h3>
+  <p>ID: DEG2026-22703</p>
+  <p>Theme: Agricultural Technology</p>
+</div>
+```
+
+  </div>
+
+  <hr />
+
+  <p className="footer-bottom">
+    © 2026 Krishibandh | All Rights Reserved 🌱
+  </p>
+</footer>
+
 
     </div>
   );
