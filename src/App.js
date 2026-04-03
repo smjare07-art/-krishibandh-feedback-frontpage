@@ -106,21 +106,21 @@ useEffect(() => {
   </p>
 
   <p>
-    🚜 Farmers can upload crop details, get real-time weather updates, and receive AI-based suggestions
+     Farmers can upload crop details, get real-time weather updates, and receive AI-based suggestions
     for better farming decisions.
   </p>
 
   <p>
-    🏭 Industries can directly place orders, track delivery using GPS, and get high-quality crops at fair prices.
+     Industries can directly place orders, track delivery using GPS, and get high-quality crops at fair prices.
   </p>
 
   <p>
-    💡 The platform uses modern technologies like AI, IoT sensors, and digital payments to improve
+     The platform uses modern technologies like AI, IoT sensors, and digital payments to improve
     communication, trust, and efficiency in the agricultural supply chain.
   </p>
 
   <p>
-    🎯 <b>Goal:</b> Increase farmer income, reduce costs for industries, and build a transparent digital ecosystem.
+     <b>Goal:</b> Increase farmer income, reduce costs for industries, and build a transparent digital ecosystem.
   </p>
 </div>
 <div className="slider-container">
@@ -159,7 +159,7 @@ useEffect(() => {
 
         {/* FORM */}
         <div className="form-box">
-          <h2>📝 Feedback Form</h2>
+          <h2> Feedback Form</h2>
 
           <form onSubmit={handleSubmit}>
             <input
