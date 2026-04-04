@@ -97,7 +97,7 @@ useEffect(() => {
         
       </div>
 <div className="info-box">
-  <h2>🌱 Project Overview</h2>
+  <h2>Project Overview</h2>
 
   <p>
     Krishibandh is a smart agricultural platform designed to directly connect farmers with industries,
@@ -137,17 +137,17 @@ useEffect(() => {
 
     <SwiperSlide>
       <img src={img1} alt="slide1" className="slide-img" />
-      <div className="slide-text">📊 Dashboard View</div>
+      <div className="slide-text">No middlemen</div>
     </SwiperSlide>
 
     <SwiperSlide>
       <img src={img2} alt="slide2" className="slide-img" />
-      <div className="slide-text">🌾 Smart Farming</div>
+      <div className="slide-text"> Smart Farming</div>
     </SwiperSlide>
 
     <SwiperSlide>
       <img src={img3} alt="slide3" className="slide-img" />
-      <div className="slide-text">🚚 Live Tracking</div>
+      <div className="slide-text">Live Tracking</div>
     </SwiperSlide>
 
   </Swiper>
