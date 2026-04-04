@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import logo from "./logo.png";
 import "./App.css";
-import img1 from "./images/img1.jpg";
-import img2 from "./images/img2.jpg";
+import img1 from "./images/img1.png";
+import img2 from "./images/img2.webp";
 import img3 from "./images/img3.jpg";
 
 import { Swiper, SwiperSlide } from "swiper/react";
