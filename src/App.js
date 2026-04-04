@@ -190,7 +190,7 @@ useEffect(() => {
               placeholder="Your Feedback"
               value={form.feedback}
               onChange={(e)=>setForm({...form,feedback:e.target.value})}
-            ></textarea>
+            required></textarea>
 
             <button type="submit">Submit</button>
           </form>
@@ -250,14 +250,14 @@ useEffect(() => {
   <h3>📞 Contact Us</h3>
   <p>Krishibandh Team</p>
   <p>krishibandh@gmail.com</p>
-  <p>📱 +91 9970933377</p>
+  <p>+91 9970933377</p>
   <a 
     href="https://wa.me/919970933377" 
     target="_blank" 
     rel="noreferrer"
     className="whatsapp-btn"
   >
-    💬 Chat on WhatsApp
+    Chat on WhatsApp
   </a>
 </div>
 
@@ -266,7 +266,7 @@ useEffect(() => {
   <hr />
 
   <p className="footer-bottom">
-    © 2026 Krishibandh | All Rights Reserved 🌱
+    © 2026 Krishibandh | All Rights Reserved | Developed by Team Krishibandh
   </p>
 </footer>
 
