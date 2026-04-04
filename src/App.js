@@ -235,7 +235,7 @@ useEffect(() => {
 <footer className="footer">
   <div className="footer-container">
 
-```
+
 {/* LEFT */}
 <div className="footer-section">
   <h2> Krishibandh</h2>
