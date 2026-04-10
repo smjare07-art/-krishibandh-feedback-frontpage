@@ -21,26 +21,28 @@ function App() {
   });
 
   const [allFeedback, setAllFeedback] = useState([]);
-  const [loading, setLoading] = useState(false); // 🔥 NEW
 
   const fetchFeedback = async () => {
-    setLoading(true);
-
     const res = await fetch("https://krishibandh-feedback.onrender.com/api/feedback");
     const data = await res.json();
-
     setAllFeedback(data);
-    setLoading(false);
   };
+const images = [img1, img2, img3];
+const [current, setCurrent] = useState(0);
 
+useEffect(() => {
+  const interval = setInterval(() => {
+    setCurrent((prev) => (prev + 1) % images.length);
+  }, 3000); // 3 sec
+
+  return () => clearInterval(interval);
+}, []);
   useEffect(() => {
     fetchFeedback();
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    setLoading(true);
 
     await fetch("https://krishibandh-feedback.onrender.com/api/feedback", {
       method: "POST",
@@ -55,7 +57,7 @@ function App() {
       feedback: ""
     });
 
-    await fetchFeedback();
+    fetchFeedback();
   };
 
   const calculateRatings = () => {
@@ -92,48 +94,72 @@ function App() {
         <img src={logo} alt="logo" className="logo" />
         <h1>Krishibandh</h1>
         <h3>Digital Bridge Between Farmers & Industries</h3>
+        
       </div>
+<div className="info-box">
+  <h2>Project Overview</h2>
 
-      {/* INFO */}
-      <div className="info-box">
-        <h2>Project Overview</h2>
-        <p>Krishibandh connects farmers directly with industries.</p>
-        <p>AI suggestions, weather updates & fair pricing.</p>
-      </div>
+  <p>
+    Krishibandh is a smart agricultural platform designed to directly connect farmers with industries,
+    eliminating middlemen and ensuring fair pricing. It creates a transparent and efficient system
+    that benefits both farmers and businesses.
+  </p>
 
-      {/* SLIDER */}
-      <div className="slider-container">
-        <Swiper
-          modules={[Navigation, Pagination, Autoplay]}
-          slidesPerView={1}
-          navigation
-          pagination={{ clickable: true }}
-          autoplay={{ delay: 2500 }}
-          loop
-        >
-          <SwiperSlide>
-            <img src={img1} className="slide-img" />
-            <div className="slide-text">No middlemen</div>
-          </SwiperSlide>
+  <p>
+     Farmers can upload crop details, get real-time weather updates, and receive AI-based suggestions
+    for better farming decisions.
+  </p>
 
-          <SwiperSlide>
-            <img src={img2} className="slide-img" />
-            <div className="slide-text">Smart Farming</div>
-          </SwiperSlide>
+  <p>
+     Industries can directly place orders, track delivery using GPS, and get high-quality crops at fair prices.
+  </p>
 
-          <SwiperSlide>
-            <img src={img3} className="slide-img" />
-            <div className="slide-text">Live Tracking</div>
-          </SwiperSlide>
-        </Swiper>
-      </div>
+  <p>
+     The platform uses modern technologies like AI, IoT sensors, and digital payments to improve
+    communication, trust, and efficiency in the agricultural supply chain.
+  </p>
+
+  <p>
+     <b>Goal:</b> Increase farmer income, reduce costs for industries, and build a transparent digital ecosystem.
+  </p>
+</div>
+<div className="slider-container">
+
+  <Swiper
+    modules={[Navigation, Pagination, Autoplay]}
+    spaceBetween={20}
+    slidesPerView={1}
+    navigation
+    pagination={{ clickable: true }}
+    autoplay={{ delay: 2500 }}
+    loop={true}
+  >
+
+    <SwiperSlide>
+      <img src={img1} alt="slide1" className="slide-img" />
+      <div className="slide-text">No middlemen</div>
+    </SwiperSlide>
+
+    <SwiperSlide>
+      <img src={img2} alt="slide2" className="slide-img" />
+      <div className="slide-text"> Smart Farming</div>
+    </SwiperSlide>
+
+    <SwiperSlide>
+      <img src={img3} alt="slide3" className="slide-img" />
+      <div className="slide-text">Live Tracking</div>
+    </SwiperSlide>
+
+  </Swiper>
+
+</div>
 
       {/* GRID */}
       <div className="grid">
 
         {/* FORM */}
         <div className="form-box">
-          <h2>Feedback Form</h2>
+          <h2> Feedback Form</h2>
 
           <form onSubmit={handleSubmit}>
             <input
@@ -150,7 +176,7 @@ function App() {
 
             <select
               value={form.rating}
-              onChange={(e)=>setForm({...form,rating:Number(e.target.value)})}
+              onChange={(e)=>setForm({...form,rating: Number(e.target.value)})}
             >
               <option value="">Rating</option>
               <option value="5">5 Star</option>
@@ -164,74 +190,86 @@ function App() {
               placeholder="Your Feedback"
               value={form.feedback}
               onChange={(e)=>setForm({...form,feedback:e.target.value})}
-              required
-            ></textarea>
+            required></textarea>
 
-            <button type="submit">
-              {loading ? "Submitting..." : "Submit"}
-            </button>
+            <button type="submit">Submit</button>
           </form>
         </div>
+{/* RATING */}
+      <div className="rating-box">
+        <h2>⭐ {avg} out of 5</h2>
+        <p>{total} ratings</p>
 
-        {/* RATING */}
-        <div className="rating-box">
-          <h2>⭐ {avg} / 5</h2>
-          <p>{total} ratings</p>
+        {[5,4,3,2,1].map((star) => (
+          <div key={star} className="rating-row">
+            <span>{star} star</span>
 
-          {[5,4,3,2,1].map(star => (
-            <div key={star} className="rating-row">
-              <span>{star} star</span>
-
-              <div className="bar">
-                <div
-                  className="bar-fill"
-                  style={{ width: `${percent[star]}%` }}
-                ></div>
-              </div>
-
-              <span>{percent[star]}%</span>
+            <div className="bar">
+              <div
+                className="bar-fill"
+                style={{ width: `${percent[star]}%` }}
+              ></div>
             </div>
-          ))}
-        </div>
 
+            <span>{percent[star]}%</span>
+          </div>
+        ))}
+      </div>
         {/* FEEDBACK */}
         <div className="feedback-box">
           <h3>📢 User Feedback</h3>
 
-          {loading ? (
-            <div className="loader"></div>
-          ) : (
-            allFeedback.map((f, index) => (
-              <div key={index} className="card">
-                <h4>{f.name}</h4>
-                <p><b>{f.occupation}</b></p>
-                <p>⭐ {f.rating}</p>
-                <p>{f.feedback}</p>
-              </div>
-            ))
-          )}
+          {allFeedback.map((f, index) => (
+            <div key={index} className="card">
+              <h4>{f.name}</h4>
+              <p><b>Occupation:</b> {f.occupation}</p>
+              <p><b>Rating:</b> ⭐ {f.rating}</p>
+              <p>{f.feedback}</p>
+            </div>
+          ))}
         </div>
 
       </div>
-
       {/* FOOTER */}
-      <footer className="footer">
-        <div className="footer-container">
-          <div className="footer-section">
-            <h2>Krishibandh</h2>
-            <p>Empowering farmers with technology</p>
-          </div>
 
-          <div className="footer-section">
-            <h3>Contact</h3>
-            <p>krishibandh@gmail.com</p>
-            <p>+91 9970933377</p>
-          </div>
-        </div>
+<footer className="footer">
+  <div className="footer-container">
 
-        <hr />
-        <p className="footer-bottom">© 2026 Krishibandh</p>
-      </footer>
+
+{/* LEFT */}
+<div className="footer-section">
+  <h2> Krishibandh</h2>
+  <p>Digital Bridge Between Farmers & Industries</p>
+  <p>
+    Empowering farmers with technology, transparency, and fair pricing.
+  </p>
+</div>
+
+{/* CENTER */}
+<div className="footer-section">
+  <h3>📞 Contact Us</h3>
+  <p>Krishibandh Team</p>
+  <p>krishibandh@gmail.com</p>
+  <p>+91 9970933377</p>
+  <a 
+    href="https://wa.me/919970933377" 
+    target="_blank" 
+    rel="noreferrer"
+    className="whatsapp-btn"
+  >
+    Chat on WhatsApp
+  </a>
+</div>
+
+  </div>
+
+  <hr />
+
+  <p className="footer-bottom">
+    © 2026 Krishibandh | All Rights Reserved | Developed by Team Krishibandh
+  </p>
+</footer>
+
 
     </div>
   );
